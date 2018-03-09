@@ -54,7 +54,7 @@
             /*var random = Math.random();
             sendMessage('' + random);*/
             var queryString = getUrlVars();
-            sendMessage('' + queryString);
+            sendMessage(JSON.stringify(queryString));
         });
     </script>
 </body>
