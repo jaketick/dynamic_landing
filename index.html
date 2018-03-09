@@ -40,14 +40,19 @@
 			    return null;
 				}
 
+				cookieName = 'mincid';
+				random = 0;
 				function eraseCookie(name) {   
 				  document.cookie = name+'=; Max-Age=-99999999;';  
 				}
 
-				if(getCookie('jakecookie') == null){
-					eraseCookie('jakecookie');
-					setCookie('jakecookie','testcookie',7);
+				if(getCookie(cookieName) == null){
+					random = Math.random();
+					setCookie(cookieName,random,9);
 				}
+
+        sendMessage('' + getCookie(cookieName));
+
 
 
         function bindEvent(element, eventName, eventHandler) {
@@ -72,12 +77,11 @@
         // Send a message to the child iframe
         var sendMessage = function(msg) {
             // Make sure you are sending a string, and to stringify JSON
-            iframeEl.contentWindow.postMessage(msg, '*');
+            iframeEl.contentWindow.postMessage(msg, iframeSource);
         };
         // Send random messge data on every button click
         bindEvent(messageButton, 'click', function (e) {
             var random = Math.random();
-            sendMessage('' + getCookie('jakecookie'));
         });
         // Listen to message from child window
         bindEvent(window, 'message', function (e) {
