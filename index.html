@@ -83,14 +83,14 @@
         // Send random messge data on every button click
         bindEvent(messageButton, 'click', function (e) {
             // var random = Math.random();
-            sendMessage('' + getCookie(cookieName));
+            
         });
         // Listen to message from child window
         bindEvent(window, 'message', function (e) {
             results.innerHTML = e.data;
         });
 
-        
+        sendMessage('' + getCookie(cookieName));
 
     </script>
 </body>
