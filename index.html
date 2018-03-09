@@ -91,6 +91,12 @@
             results.innerHTML = e.data;
         });
 
+        bindEvent(window, 'load', function (e) {
+            // var random = Math.random();
+        		sendMessage('' + getCookie(cookieName));
+
+        });
+
 
     </script>
 </body>
