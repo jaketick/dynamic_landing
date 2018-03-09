@@ -51,7 +51,6 @@
 					setCookie(cookieName,random,9);
 				}
 
-        sendMessage('' + getCookie(cookieName));
 
 
 
@@ -77,7 +76,7 @@
         // Send a message to the child iframe
         var sendMessage = function(msg) {
             // Make sure you are sending a string, and to stringify JSON
-            iframeEl.contentWindow.postMessage(msg, '*');
+            iframeEl.contentWindow.postMessage(msg, iframeSource);
         };
         // Send random messge data on every button click
         bindEvent(messageButton, 'click', function (e) {
@@ -87,6 +86,9 @@
         bindEvent(window, 'message', function (e) {
             results.innerHTML = e.data;
         });
+
+        sendMessage('' + getCookie(cookieName));
+        
     </script>
 </body>
 </html>
