@@ -74,7 +74,7 @@
                 element.attachEvent('on' + eventName, eventHandler);
             }
         }
-        var iframeSource = 'https://kaidangspace.github.io/test/iframe.html';
+        var iframeSource = 'https://jaketick.github.io/dynamic_landing/iframe.html?id=1&action=test';
         // Create the iframe
         var iframe = document.createElement('iframe');
         iframe.setAttribute('src', iframeSource);
@@ -99,12 +99,13 @@
         });
         // Listen to message from child window
         bindEvent(window, 'message', function (e) {
-            results.innerHTML = e.data;
+        	console.log(e);
+          results.innerHTML = e.data;
         });
 
         bindEvent(window, 'load', function (e) {
             var queryString = getUrlVars();
-            console.log(queryString);
+            // console.log(queryString);
         		sendMessage('' + queryString);
         		// sendMessage('' + getCookie(cookieName));
 
