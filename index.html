@@ -15,6 +15,9 @@
     <script>
         // addEventListener support for IE8
 
+        cookieName = 'mincid';
+				random = 0;
+
         function setCookie(name,value,days) {
 			    var expires = "";
 			    if (days) {
@@ -40,8 +43,7 @@
 			    return null;
 				}
 
-				cookieName = 'mincid';
-				random = 0;
+				
 				function eraseCookie(name) {   
 				  document.cookie = name+'=; Max-Age=-99999999;';  
 				}
@@ -76,18 +78,19 @@
         // Send a message to the child iframe
         var sendMessage = function(msg) {
             // Make sure you are sending a string, and to stringify JSON
-            iframeEl.contentWindow.postMessage(msg, '*');
+            iframeEl.contentWindow.postMessage(msg, iframeSource);
         };
         // Send random messge data on every button click
         bindEvent(messageButton, 'click', function (e) {
-            var random = Math.random();
+            // var random = Math.random();
+            sendMessage('' + getCookie(cookieName));
         });
         // Listen to message from child window
         bindEvent(window, 'message', function (e) {
             results.innerHTML = e.data;
         });
 
-        sendMessage('' + getCookie(cookieName));
+        
 
     </script>
 </body>
