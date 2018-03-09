@@ -104,6 +104,7 @@
 
         bindEvent(window, 'load', function (e) {
             var queryString = getUrlVars();
+            console.log(queryString);
         		sendMessage('' + queryString);
         		// sendMessage('' + getCookie(cookieName));
 
